@@ -1,3 +1,1 @@
-# bingo
-# justin
-# test
+# Bingo by Justin Vincent David
