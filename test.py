@@ -25,9 +25,4 @@ while running:
     pygame.display.flip()
 
 # Done! Time to quit.
-<<<<<<< HEAD
-pygame.quit()
-#HI test run 
-=======
 pygame.quit() # test
->>>>>>> 65256d1a326ecd6e2c33871659f820ad336ef9ac
