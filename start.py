@@ -33,7 +33,7 @@ smallfont = pygame.font.SysFont('Helvetica',35)
   
 # rendering a text written in 
 # this font 
-text = smallfont.render('Start' , True , color) 
+text = smallfont.render('Start', True , color) 
   
 while True: 
     # fills the screen with a color 
