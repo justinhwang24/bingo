@@ -106,6 +106,6 @@ def update_button(pair):
         if pair not in clicked:
             clicked.append(pair)
         else:
-            clicked.remove(pair)
+            clicked.remove(pair)    
 
 main()
