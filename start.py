@@ -1,5 +1,6 @@
 import pygame 
 import sys 
+import game
   
 # initializing the constructor 
 pygame.init() 
@@ -50,7 +51,8 @@ while True:
             # if clicked on button, start game
             if width/2-70 <= mouse[0] <= width/2+70 and height/2-50 <= mouse[1] <= height/2-10: 
                 pygame.quit()
-                # TODO - START
+                # Start Game
+                game.main()
       
     # if hovering on a button, change to a lighter shade  
     if width/2-70 <= mouse[0] <= width/2+70 and height/2-50 <= mouse[1] <= height/2-10: 
