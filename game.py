@@ -4,6 +4,7 @@ import random
 
 pygame.init() 
 pygame.font.init()
+pygame.display.init()
 
 RES = (720, 720)
 SCREEN = pygame.display.set_mode(RES)
@@ -20,8 +21,7 @@ clicked = []
 numbers = []
 
 def main():
-    # initializing the constructor
-    
+
     width = SCREEN.get_width() 
     height = SCREEN.get_height()
 
@@ -98,10 +98,8 @@ def get_square(mouse):
         for y1 in range (2, 7):
             x2 = x1 * SIZE + 5
             y2 = y1 * SIZE + 40
-            x3 = x2 + SIZE
-            y3 = y2 + SIZE
 
-            if x2 <= x <= x3 and y2 <= y <= y3:
+            if x2 <= x <= x2 + SIZE and y2 <= y <= y2 + SIZE:
                 pair.append(x1)
                 pair.append(y1)
                 return pair
