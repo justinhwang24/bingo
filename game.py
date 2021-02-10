@@ -42,6 +42,10 @@ def main():
                 SCREEN.blit(text, ((x + 2.2) * SIZE, (y + 2.8) * SIZE))
                 i += 1
 
+        if detect_bingo():
+            win_text = smallfont.render("BINGO!", True, BLACK)
+            SCREEN.blit(win_text, (SIZE/2, SIZE/2))
+        
         mouse = pygame.mouse.get_pos()
 
         for ev in pygame.event.get(): 
@@ -53,6 +57,7 @@ def main():
             if ev.type == pygame.MOUSEBUTTONDOWN:
                 pair = get_square(mouse)
                 update_button(pair)
+                detect_bingo()
         
         pygame.display.update()
 
@@ -106,6 +111,21 @@ def update_button(pair):
         if pair not in clicked:
             clicked.append(pair)
         else:
-            clicked.remove(pair)    
+            clicked.remove(pair)
+
+def detect_bingo():
+    x = []
+    y = []
+    diagonal1 = []
+    diagonal2 = []
+    for pair in clicked:
+        x.append(pair[0])
+        y.append(pair[1])
+        if pair[0] == pair[1]:
+            diagonal1.append(pair[0])
+        if pair[0] + pair[1] == 8:
+            diagonal2.append(pair[0])
+        if x.count(pair[0]) == 5 or y.count(pair[1]) == 5 or len(diagonal1) == 5 or len(diagonal2) == 5:
+            return True
 
 main()
