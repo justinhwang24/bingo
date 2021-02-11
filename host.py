@@ -63,7 +63,7 @@ def generate_num(pressed):
         while num in numbers:
             num = random.randint(1, 75)
         numbers.append(num)
-        text = smallfont.render(str(generate_num()), True, BLACK)
+        text = smallfont.render(str(num), True, BLACK)
         SCREEN.blit(text, (3 * SIZE + 5, 3 * SIZE - 40))
 
 main()
