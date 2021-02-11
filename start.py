@@ -21,14 +21,15 @@ textfont = pygame.font.SysFont('Helvetica', 50)
 textfont1 = pygame.font.SysFont('Helvetica', 35) 
   
 # render text
-text = smallfont.render('Start', True, WHITE)
-text1 = textfont1.render('By Justin Vincent David', True, (209, 237, 255))
+text = textfont1.render('By Justin Vincent David', True, (209, 237, 255))
+text1 = smallfont.render('Start', True, WHITE)
+text2 = smallfont.render('Host', True, WHITE)
 
 image = pygame.image.load('logo.png')
 
 while True: 
     screen.fill(BLUE)
-    screen.blit(text1, (225, 180))
+    screen.blit(text, (225, 180))
     screen.blit(image, (200, 20))
       
     mouse = pygame.mouse.get_pos()
@@ -40,19 +41,29 @@ while True:
         # if mouse clicked 
         if ev.type == pygame.MOUSEBUTTONDOWN: 
               
-            # if clicked on button, start game
+            # start game
             if width/2-70 <= mouse[0] <= width/2+70 and height/2-50 <= mouse[1] <= height/2-10: 
-                # Start Game
                 import game
                 game.main()
+            
+            # host - generate numbers
+            if width/2-70 <= mouse[0] <= width/2+70 and height/2 + 10 <= mouse[1] <= height/2 + 50:
+                import host
+                host.main()
       
     # if hovering on a button, change to a lighter shade  
     if width/2-70 <= mouse[0] <= width/2+70 and height/2-50 <= mouse[1] <= height/2-10: 
         pygame.draw.rect(screen, TEAL,[width/2 - 70, height/2 - 50, 140, 40])
     else: 
-        pygame.draw.rect(screen, DARK_TEAL,[width/2 - 70, height/2 - 50, 140, 40]) 
+        pygame.draw.rect(screen, DARK_TEAL,[width/2 - 70, height/2 - 50, 140, 40])
+
+    if width/2-70 <= mouse[0] <= width/2+70 and height/2 + 10 <= mouse[1] <= height/2 + 50:
+        pygame.draw.rect(screen, TEAL, [width/2 - 70, height/2 + 10, 140, 40])
+    else: 
+        pygame.draw.rect(screen, DARK_TEAL, [width/2 - 70, height/2 + 10, 140, 40])
     
-    screen.blit(text, (width/2 - 35, height/2 - 43)) 
+    screen.blit(text1, (width/2 - 35, height/2 - 43))
+    screen.blit(text2, (width/2 - 35, height/2 + 20))
     
     # updates frames
     pygame.display.update()
