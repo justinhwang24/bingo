@@ -44,7 +44,7 @@ def main():
 
         if detect_bingo():
             win_text = smallfont.render("BINGO!", True, BLACK)
-            SCREEN.blit(win_text, (750-SIZE/2, 750-SIZE/2))
+            SCREEN.blit(win_text, (360, 600))
         
         mouse = pygame.mouse.get_pos()
 
@@ -55,10 +55,22 @@ def main():
 
             # if mouse clicked 
             if ev.type == pygame.MOUSEBUTTONDOWN:
-                pair = get_square(mouse)
-                update_button(pair)
-                detect_bingo()
+                if width/2-320 <= mouse[0] <= width/2-220 and height/2-320 <= mouse[1] <= height/2-280: 
+                    import start
+                    start.main()
+                else:
+                    pair = get_square(mouse)
+                    update_button(pair)
+                    detect_bingo()
         
+        go_back = smallfont.render("↩️", True, WHITE)
+        SCREEN.blit(go_back, (750-SIZE/2, 750-SIZE/2))
+
+        if width/2-320 <= mouse[0] <= width/2-220 and height/2-320 <= mouse[1] <= height/2-280: 
+            pygame.draw.rect(SCREEN, TEAL,[width/2 - 320, height/2 - 320, 100, 40])
+        else: 
+            pygame.draw.rect(SCREEN, DARK_TEAL,[width/2 - 320, height/2 - 320, 100, 40])
+
         pygame.display.update()
 
 def generate_board():
