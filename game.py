@@ -44,7 +44,7 @@ def main():
 
         if detect_bingo():
             win_text = smallfont.render("BINGO!", True, BLACK)
-            SCREEN.blit(win_text, (SIZE/2, SIZE/2))
+            SCREEN.blit(win_text, (750-SIZE/2, 750-SIZE/2))
         
         mouse = pygame.mouse.get_pos()
 
