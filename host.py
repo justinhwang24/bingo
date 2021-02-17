@@ -15,8 +15,12 @@ TEAL = (0, 160, 181)
 DARK_TEAL = (0, 79, 89) 
 YELLOW = (252, 206, 3)
 BLACK = (0, 0, 0)
-smallfont = pygame.font.SysFont('Helvetica', 35) 
-bigfont = pygame.font.SysFont('Helvetica', 50)
+
+
+WIDTH = SCREEN.get_width() 
+HEIGHT = SCREEN.get_height()
+smallfont = pygame.font.SysFont('Helvetica',30) 
+bigfont = pygame.font.SysFont('Helvetica', 70)
 numbers = []
 pressed = False
 
@@ -24,10 +28,8 @@ text = smallfont.render('Generate!', True, WHITE)
 
 def main():
 
-    width = SCREEN.get_width() 
-    height = SCREEN.get_height()
-
     image = pygame.image.load('logo.png')
+    numbers.append(" ")
 
     while True: 
         # objects on screen
@@ -38,32 +40,31 @@ def main():
 
         for ev in pygame.event.get(): 
             if ev.type == pygame.QUIT:
-                pygame.quit() 
+                pygame.quit()
                 sys.exit
 
             # if mouse clicked 
             if ev.type == pygame.MOUSEBUTTONDOWN:
-                generate_num(True)
-
-        pygame.draw.rect(SCREEN, YELLOW, [width/2 - 100, height/2 - 100, 200, 200])
+                generate_num()
+        
+        pygame.draw.rect(SCREEN, YELLOW, [WIDTH/2 - 100, HEIGHT/2 - 200, 200, 200])
+        num_text = bigfont.render(str(numbers[0]), True, BLACK)
+        SCREEN.blit((num_text), (WIDTH/2 - 30, HEIGHT/2 - 120))
 
         # if hovering on a button, change to a lighter shade  
-        if width/2-70 <= mouse[0] <= width/2+70 and height/2-50 <= mouse[1] <= height/2-10: 
-            pygame.draw.rect(SCREEN, TEAL, [width/2 - 70, height/2 - 50, 140, 40])
+        if WIDTH/2-70 <= mouse[0] <= WIDTH/2+70 and HEIGHT/2-50 <= mouse[1] <= HEIGHT/2-10: 
+            pygame.draw.rect(SCREEN, TEAL, [WIDTH/2 - 70, HEIGHT/2 + 100, 140, 40])
         else: 
-            pygame.draw.rect(SCREEN, DARK_TEAL, [width/2 - 70, height/2 + 100, 140, 40])
+            pygame.draw.rect(SCREEN, DARK_TEAL, [WIDTH/2 - 70, HEIGHT/2 + 100, 140, 40])
     
-        SCREEN.blit(text, (width/2 - 35, height/2 + 107))
+        SCREEN.blit(text, (WIDTH/2 - 52, HEIGHT/2 + 110))
         
         pygame.display.update()
 
-def generate_num(pressed):
-    if pressed:
+def generate_num():
+    num = random.randint(1, 75)
+    while num in numbers:
         num = random.randint(1, 75)
-        while num in numbers:
-            num = random.randint(1, 75)
-        numbers.append(num)
-        text = smallfont.render(str(num), True, BLACK)
-        SCREEN.blit(text, (3 * SIZE + 5, 3 * SIZE - 40))
+    numbers[0] = num
 
 main()
