@@ -56,19 +56,18 @@ def main():
         SCREEN.blit((num_text), (WIDTH/2 - 30, HEIGHT/2 - 120))
 
         # if hovering on a button, change to a lighter shade  
-        if WIDTH/2-70 <= mouse[0] <= WIDTH/2+70 and HEIGHT/2-50 <= mouse[1] <= HEIGHT/2-10: 
+        if WIDTH/2-70 <= mouse[0] <= WIDTH/2+70 and HEIGHT/2+100 <= mouse[1] <= HEIGHT/2+140: 
             pygame.draw.rect(SCREEN, TEAL, [WIDTH/2 - 70, HEIGHT/2 + 100, 140, 40])
         else: 
             pygame.draw.rect(SCREEN, DARK_TEAL, [WIDTH/2 - 70, HEIGHT/2 + 100, 140, 40])
-
-        go_back = smallfont.render("↩️", True, WHITE)
-        SCREEN.blit(go_back, (WIDTH/2 - 320, HEIGHT/2 - 320))
 
         if WIDTH/2-320 <= mouse[0] <= WIDTH/2-220 and HEIGHT/2-320 <= mouse[1] <= HEIGHT/2-280: 
             pygame.draw.rect(SCREEN, TEAL,[WIDTH/2 - 320, HEIGHT/2 - 320, 100, 40])
         else: 
             pygame.draw.rect(SCREEN, DARK_TEAL,[WIDTH/2 - 320, HEIGHT/2 - 320, 100, 40])
 
+        go_back = smallfont.render("Back", True, WHITE)
+        SCREEN.blit(go_back, (WIDTH/2 - 300, HEIGHT/2 - 310))
         SCREEN.blit(text, (WIDTH/2 - 52, HEIGHT/2 + 110))
         
         pygame.display.update()
