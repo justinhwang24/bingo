@@ -64,7 +64,7 @@ def main():
                     detect_bingo()
         
         go_back = smallfont.render("↩️", True, WHITE)
-        SCREEN.blit(go_back, (750-SIZE/2, 750-SIZE/2))
+        SCREEN.blit(go_back, (width/2 - 320, height/2 - 320))
 
         if width/2-320 <= mouse[0] <= width/2-220 and height/2-320 <= mouse[1] <= height/2-280: 
             pygame.draw.rect(SCREEN, TEAL,[width/2 - 320, height/2 - 320, 100, 40])
