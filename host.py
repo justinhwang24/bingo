@@ -45,7 +45,11 @@ def main():
 
             # if mouse clicked 
             if ev.type == pygame.MOUSEBUTTONDOWN:
-                generate_num()
+                if WIDTH/2-320 <= mouse[0] <= WIDTH/2-220 and HEIGHT/2-320 <= mouse[1] <= HEIGHT/2-280: 
+                    import start
+                    start.main()
+                else:
+                    generate_num()
         
         pygame.draw.rect(SCREEN, YELLOW, [WIDTH/2 - 100, HEIGHT/2 - 200, 200, 200])
         num_text = bigfont.render(str(numbers[0]), True, BLACK)
@@ -56,7 +60,15 @@ def main():
             pygame.draw.rect(SCREEN, TEAL, [WIDTH/2 - 70, HEIGHT/2 + 100, 140, 40])
         else: 
             pygame.draw.rect(SCREEN, DARK_TEAL, [WIDTH/2 - 70, HEIGHT/2 + 100, 140, 40])
-    
+
+        go_back = smallfont.render("↩️", True, WHITE)
+        SCREEN.blit(go_back, (750-SIZE/2, 750-SIZE/2))
+
+        if WIDTH/2-320 <= mouse[0] <= WIDTH/2-220 and HEIGHT/2-320 <= mouse[1] <= HEIGHT/2-280: 
+            pygame.draw.rect(SCREEN, TEAL,[WIDTH/2 - 320, HEIGHT/2 - 320, 100, 40])
+        else: 
+            pygame.draw.rect(SCREEN, DARK_TEAL,[WIDTH/2 - 320, HEIGHT/2 - 320, 100, 40])
+
         SCREEN.blit(text, (WIDTH/2 - 52, HEIGHT/2 + 110))
         
         pygame.display.update()
