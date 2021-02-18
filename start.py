@@ -3,6 +3,7 @@ import sys
 
 pygame.init() 
 pygame.font.init()
+pygame.display.init()
 
 res = (720,720)
 screen = pygame.display.set_mode(res) 
