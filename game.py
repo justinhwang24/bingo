@@ -43,8 +43,8 @@ def main():
                 i += 1
 
         if detect_bingo():
-            win_text = smallfont.render("BINGO!", True, BLACK)
-            SCREEN.blit(win_text, (360, 600))
+            win_text = bigfont.render("BINGO!", True, WHITE)
+            SCREEN.blit(win_text, (300, 600))
         
         mouse = pygame.mouse.get_pos()
 
