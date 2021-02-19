@@ -9,12 +9,14 @@ pygame.display.init()
 RES = (720, 720)
 SCREEN = pygame.display.set_mode(RES)
 SIZE = 75
+
 WHITE = (255, 255, 255)
 BLUE = (3, 152, 252) 
 TEAL = (0, 160, 181)
 DARK_TEAL = (0, 79, 89) 
 YELLOW = (252, 206, 3)
 BLACK = (0, 0, 0)
+
 smallfont = pygame.font.SysFont('Helvetica', 35) 
 bigfont = pygame.font.SysFont('Helvetica', 50)
 clicked = []
