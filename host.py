@@ -19,10 +19,10 @@ BLACK = (0, 0, 0)
 
 WIDTH = SCREEN.get_width() 
 HEIGHT = SCREEN.get_height()
-smallfont = pygame.font.SysFont('Helvetica',30) 
+smallfont = pygame.font.SysFont('Helvetica', 30) 
+midfont = pygame.font.SysFont('Helvetica', 45) 
 bigfont = pygame.font.SysFont('Helvetica', 70)
 numbers = []
-pressed = False
 
 text = smallfont.render('Generate!', True, WHITE)
 
@@ -52,8 +52,10 @@ def main():
                     generate_num()
         
         pygame.draw.rect(SCREEN, YELLOW, [WIDTH/2 - 100, HEIGHT/2 - 200, 200, 200])
-        num_text = bigfont.render(str(numbers[0]), True, BLACK)
+        num_text = bigfont.render(str(numbers[-1]), True, BLACK)
         SCREEN.blit((num_text), (WIDTH/2 - 30, HEIGHT/2 - 120))
+        char_text = midfont.render(get_letter(numbers[-1]), True, BLACK)
+        SCREEN.blit((char_text), (WIDTH/2 - 15, HEIGHT/2 - 175))
 
         # if hovering on a button, change to a lighter shade  
         if WIDTH/2-70 <= mouse[0] <= WIDTH/2+70 and HEIGHT/2+100 <= mouse[1] <= HEIGHT/2+140: 
@@ -73,9 +75,24 @@ def main():
         pygame.display.update()
 
 def generate_num():
-    num = random.randint(1, 75)
-    while num in numbers:
+    if len(numbers) < 75:
         num = random.randint(1, 75)
-    numbers[0] = num
+        while num in numbers:
+            num = random.randint(1, 75)
+        numbers.append(num)
+    else:
+        numbers.append("Done")
+
+def get_letter(num):
+    if num in range (16):
+        return "B"
+    elif num in range (16, 31):
+        return "I"
+    elif num in range (31, 46):
+        return "N"
+    elif num in range (46, 61):
+        return "G"
+    elif num in range (61, 76):
+        return "O"
 
 main()
