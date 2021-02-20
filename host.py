@@ -24,18 +24,31 @@ midfont = pygame.font.SysFont('Helvetica', 45)
 bigfont = pygame.font.SysFont('Helvetica', 70)
 numbers = []
 
-text = smallfont.render('Generate!', True, WHITE)
-
 def main():
-
     image = pygame.image.load('logo.png')
-    numbers.append(" ")
+
+    if len(numbers) == 0:
+        numbers.append(" ")
 
     while True: 
         # objects on screen
         SCREEN.fill(BLUE)
         SCREEN.blit(image, (200, 20))
-        
+
+        pygame.draw.rect(SCREEN, YELLOW, [WIDTH/2 - 100, HEIGHT/2 - 200, 200, 200])
+        num_text = bigfont.render(str(numbers[-1]), True, BLACK) # get number
+        SCREEN.blit((num_text), (WIDTH/2 - 30, HEIGHT/2 - 120))
+        list_numbers() # show generated numbers
+
+        char_text = midfont.render(get_letter(numbers[-1]), True, BLACK) # get letter of number
+        SCREEN.blit((char_text), (WIDTH/2 - 15, HEIGHT/2 - 175))
+
+        go_back_text = smallfont.render("Back", True, WHITE) # back button
+        SCREEN.blit(go_back_text, (WIDTH/2 - 300, HEIGHT/2 - 310))
+
+        generate_text = smallfont.render('Generate!', True, WHITE)
+        SCREEN.blit(generate_text, (WIDTH/2 - 52, HEIGHT/2 + 110))
+
         mouse = pygame.mouse.get_pos()
 
         for ev in pygame.event.get(): 
@@ -48,14 +61,8 @@ def main():
                 if WIDTH/2-320 <= mouse[0] <= WIDTH/2-220 and HEIGHT/2-320 <= mouse[1] <= HEIGHT/2-280: 
                     import start
                     start.main()
-                else:
+                elif WIDTH/2-70 <= mouse[0] <= WIDTH/2+70 and HEIGHT/2+100 <= mouse[1] <= HEIGHT/2+140: 
                     generate_num()
-        
-        pygame.draw.rect(SCREEN, YELLOW, [WIDTH/2 - 100, HEIGHT/2 - 200, 200, 200])
-        num_text = bigfont.render(str(numbers[-1]), True, BLACK)
-        SCREEN.blit((num_text), (WIDTH/2 - 30, HEIGHT/2 - 120))
-        char_text = midfont.render(get_letter(numbers[-1]), True, BLACK)
-        SCREEN.blit((char_text), (WIDTH/2 - 15, HEIGHT/2 - 175))
 
         # if hovering on a button, change to a lighter shade  
         if WIDTH/2-70 <= mouse[0] <= WIDTH/2+70 and HEIGHT/2+100 <= mouse[1] <= HEIGHT/2+140: 
@@ -67,10 +74,6 @@ def main():
             pygame.draw.rect(SCREEN, TEAL,[WIDTH/2 - 320, HEIGHT/2 - 320, 100, 40])
         else: 
             pygame.draw.rect(SCREEN, DARK_TEAL,[WIDTH/2 - 320, HEIGHT/2 - 320, 100, 40])
-
-        go_back = smallfont.render("Back", True, WHITE)
-        SCREEN.blit(go_back, (WIDTH/2 - 300, HEIGHT/2 - 310))
-        SCREEN.blit(text, (WIDTH/2 - 52, HEIGHT/2 + 110))
         
         pygame.display.update()
 
@@ -94,5 +97,17 @@ def get_letter(num):
         return "G"
     elif num in range (61, 76):
         return "O"
+
+def list_numbers():
+    x = 0
+    if len(numbers) >= 10:
+        x = 10
+    else:
+        x = len(numbers)
+    for i in range (1, 10):
+        pygame.draw.rect(SCREEN, TEAL, [WIDTH/2 - 320, HEIGHT/2 + (i-4) * 60, 100, 50])
+    for i in range (1, x):
+        num_text = midfont.render(str(numbers[-i]), True, WHITE)
+        SCREEN.blit((num_text), (WIDTH/2 - 300, HEIGHT/2 + (i-4) * 60 + 20))
 
 main()
