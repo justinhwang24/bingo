@@ -1,6 +1,7 @@
 import pygame 
 import sys 
 import random
+from variables import palette
 
 pygame.init() 
 pygame.font.init()
@@ -32,7 +33,7 @@ def main():
 
     while True: 
         # objects on screen
-        SCREEN.fill(BLUE)
+        SCREEN.fill(palette[0])
         SCREEN.blit(image, (200, 20))
 
         pygame.draw.rect(SCREEN, YELLOW, [WIDTH/2 - 100, HEIGHT/2 - 200, 200, 200])

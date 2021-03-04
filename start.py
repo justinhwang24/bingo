@@ -1,5 +1,6 @@
 import pygame 
 import sys
+from variables import palette
 
 pygame.init()
 pygame.font.init()
@@ -29,7 +30,7 @@ def main():
     image = pygame.image.load('logo.png')
 
     while True: 
-        SCREEN.fill(BLUE)
+        SCREEN.fill(palette[0])
         SCREEN.blit(text, (225, 180))
         SCREEN.blit(image, (200, 20))
         
@@ -54,7 +55,8 @@ def main():
 
                 # settings
                 if WIDTH/2-70 <= mouse[0] <= WIDTH/2+70 and HEIGHT/2 + 70 <= mouse[1] <= HEIGHT/2 + 110:
-                    # TODO
+                    import settings
+                    settings.main()
         
         # if hovering on a button, change to a lighter shade  
         if WIDTH/2-90 <= mouse[0] <= WIDTH/2+90 and HEIGHT/2-50 <= mouse[1] <= HEIGHT/2-10: 
@@ -75,7 +77,7 @@ def main():
 
         SCREEN.blit(text1, (WIDTH/2 - 35, HEIGHT/2 - 43))
         SCREEN.blit(text2, (WIDTH/2 - 35, HEIGHT/2 + 20))
-        SCREEN.blit(text3, (WIDTH/2 - 35, HEIGHT/2 + 40))
+        SCREEN.blit(text3, (WIDTH/2 - 50, HEIGHT/2 + 80))
         
         # updates frames
         pygame.display.update()

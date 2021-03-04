@@ -1,6 +1,7 @@
 import pygame 
 import sys 
 import random
+from variables import palette
 
 pygame.init() 
 pygame.font.init()
@@ -32,7 +33,7 @@ def main():
 
     while True: 
         # objects on screen
-        SCREEN.fill(BLUE)
+        SCREEN.fill(palette[0])
         draw_grid()
         SCREEN.blit(image, (200, 20))
 
@@ -98,10 +99,10 @@ def draw_grid():
 
             if pair not in clicked:
                 pygame.draw.rect(SCREEN, WHITE, rectangle)
-                pygame.draw.rect(SCREEN, BLUE, rectangle, 5)
+                pygame.draw.rect(SCREEN, palette[0], rectangle, 5)
             else:
                 pygame.draw.rect(SCREEN, YELLOW, rectangle)
-                pygame.draw.rect(SCREEN, BLUE, rectangle, 5)
+                pygame.draw.rect(SCREEN, palette[0], rectangle, 5)
 
 def get_square(mouse):
     x = mouse[0]
