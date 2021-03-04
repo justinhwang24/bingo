@@ -43,12 +43,6 @@ def main():
         char_text = midfont.render(get_letter(numbers[-1]), True, BLACK) # get letter of number
         SCREEN.blit((char_text), (WIDTH/2 - 15, HEIGHT/2 - 175))
 
-        go_back_text = smallfont.render("Back", True, WHITE) # back button
-        SCREEN.blit(go_back_text, (WIDTH/2 - 300, HEIGHT/2 - 310))
-
-        generate_text = smallfont.render('Generate!', True, WHITE)
-        SCREEN.blit(generate_text, (WIDTH/2 - 52, HEIGHT/2 + 110))
-
         mouse = pygame.mouse.get_pos()
 
         for ev in pygame.event.get(): 
@@ -74,6 +68,12 @@ def main():
             pygame.draw.rect(SCREEN, TEAL,[WIDTH/2 - 320, HEIGHT/2 - 320, 100, 40])
         else: 
             pygame.draw.rect(SCREEN, DARK_TEAL,[WIDTH/2 - 320, HEIGHT/2 - 320, 100, 40])
+        
+        go_back_text = smallfont.render("Back", True, WHITE) # back button
+        SCREEN.blit(go_back_text, (WIDTH/2 - 300, HEIGHT/2 - 310))
+
+        generate_text = smallfont.render('Generate!', True, WHITE)
+        SCREEN.blit(generate_text, (WIDTH/2 - 52, HEIGHT/2 + 110))
         
         pygame.display.update()
 
@@ -108,6 +108,8 @@ def list_numbers():
         pygame.draw.rect(SCREEN, TEAL, [WIDTH/2 - 320, HEIGHT/2 + (i-4) * 60, 100, 50])
     for i in range (1, x):
         num_text = midfont.render(str(numbers[-i]), True, WHITE)
-        SCREEN.blit((num_text), (WIDTH/2 - 300, HEIGHT/2 + (i-4) * 60 + 20))
+        letter_text = smallfont.render(get_letter(num_text), True, WHITE)
+        SCREEN.blit((num_text), (WIDTH/2 - 280, HEIGHT/2 + (i-4) * 60 + 20))
+        SCREEN.blit((letter_text), (WIDTH/2 - 310, HEIGHT/2 + (i-4) * 60 + 20))
 
 main()

@@ -31,8 +31,6 @@ def main():
         SCREEN.fill(BLUE)
         SCREEN.blit(text, (225, 180))
         SCREEN.blit(image, (200, 20))
-        SCREEN.blit(text1, (WIDTH/2 - 35, HEIGHT/2 - 43))
-        SCREEN.blit(text2, (WIDTH/2 - 35, HEIGHT/2 + 20))
         
         mouse = pygame.mouse.get_pos()
 
@@ -63,6 +61,10 @@ def main():
             pygame.draw.rect(SCREEN, TEAL, [WIDTH/2 - 90, HEIGHT/2 + 10, 180, 40])
         else: 
             pygame.draw.rect(SCREEN, DARK_TEAL, [WIDTH/2 - 90, HEIGHT/2 + 10, 180, 40])
+        
+
+        SCREEN.blit(text1, (WIDTH/2 - 35, HEIGHT/2 - 43))
+        SCREEN.blit(text2, (WIDTH/2 - 35, HEIGHT/2 + 20))
         
         # updates frames
         pygame.display.update()
