@@ -23,6 +23,7 @@ textfont = pygame.font.SysFont('Helvetica', 50)
 text = smallfont.render('By Justin Vincent David', True, (209, 237, 255))
 text1 = smallfont.render('Start', True, WHITE)
 text2 = smallfont.render('Host', True, WHITE)
+text3 = smallfont.render('Settings', True, WHITE)
 
 def main():
     image = pygame.image.load('logo.png')
@@ -50,6 +51,10 @@ def main():
                 if WIDTH/2-70 <= mouse[0] <= WIDTH/2+70 and HEIGHT/2 + 10 <= mouse[1] <= HEIGHT/2 + 50:
                     import host
                     host.main()
+
+                # settings
+                if WIDTH/2-70 <= mouse[0] <= WIDTH/2+70 and HEIGHT/2 + 70 <= mouse[1] <= HEIGHT/2 + 110:
+                    # TODO
         
         # if hovering on a button, change to a lighter shade  
         if WIDTH/2-90 <= mouse[0] <= WIDTH/2+90 and HEIGHT/2-50 <= mouse[1] <= HEIGHT/2-10: 
@@ -61,10 +66,16 @@ def main():
             pygame.draw.rect(SCREEN, TEAL, [WIDTH/2 - 90, HEIGHT/2 + 10, 180, 40])
         else: 
             pygame.draw.rect(SCREEN, DARK_TEAL, [WIDTH/2 - 90, HEIGHT/2 + 10, 180, 40])
+
+        if WIDTH/2-90 <= mouse[0] <= WIDTH/2+90 and HEIGHT/2 + 70 <= mouse[1] <= HEIGHT/2 + 110:
+            pygame.draw.rect(SCREEN, TEAL, [WIDTH/2 - 90, HEIGHT/2 + 70, 180, 40])
+        else: 
+            pygame.draw.rect(SCREEN, DARK_TEAL, [WIDTH/2 - 90, HEIGHT/2 + 70, 180, 40])
         
 
         SCREEN.blit(text1, (WIDTH/2 - 35, HEIGHT/2 - 43))
         SCREEN.blit(text2, (WIDTH/2 - 35, HEIGHT/2 + 20))
+        SCREEN.blit(text3, (WIDTH/2 - 35, HEIGHT/2 + 40))
         
         # updates frames
         pygame.display.update()

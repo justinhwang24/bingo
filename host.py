@@ -108,8 +108,8 @@ def list_numbers():
         pygame.draw.rect(SCREEN, TEAL, [WIDTH/2 - 320, HEIGHT/2 + (i-4) * 60, 100, 50])
     for i in range (1, x):
         num_text = midfont.render(str(numbers[-i]), True, WHITE)
-        letter_text = smallfont.render(get_letter(num_text), True, WHITE)
-        SCREEN.blit((num_text), (WIDTH/2 - 280, HEIGHT/2 + (i-4) * 60 + 20))
+        letter_text = smallfont.render(get_letter(numbers[-i]), True, WHITE)
+        SCREEN.blit((num_text), (WIDTH/2 - 280, HEIGHT/2 + (i-4) * 60 + 10))
         SCREEN.blit((letter_text), (WIDTH/2 - 310, HEIGHT/2 + (i-4) * 60 + 20))
 
 main()
